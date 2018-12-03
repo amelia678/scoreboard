@@ -82,23 +82,37 @@ class App extends Component {
   // }
 
   // V.2: .map, using a shorthand to copy values out of the original
+// _incrementScoreById(id){
+//   // find the player in this.state.scores
+//   // increment their score
+//   const newScores = this.state.scores.map(bruce => {
+//     if(bruce.id !== id){
+//       return bruce
+//     } else{
+//       return {
+//         ...bruce,
+//         score: bruce.score + 1
+//       };
+//     }
+//   });
+//   // and call this.setState
+//   this.setState({
+//     scores: newScores
+//   })
+// }
+
+// V.3: .map, object copy + ternary + implicit return
+// using shorthand to copy values out of original score
 _incrementScoreById(id){
-  // find the player in this.state.scores
-  // increment their score
-  const newScores = this.state.scores.map(bruce => {
-    if(bruce.id !== id){
-      return bruce
-    } else{
-      return {
-        ...bruce,
-        score: bruce.score + 1
-      };
-    }
-  });
-  // and call this.setState
-  this.setState({
-    scores: newScores
-  })
+    // find the player in this.state.scores
+    // increment their score
+    const newScores = this.state.scores.map(bob => {
+      return bob.id !==  id ? bob : {...bob, score: bob.score+1}
+    })
+    // and call this.setState
+    this.setState({
+      scores: newScores
+    });
 }
 
 }
